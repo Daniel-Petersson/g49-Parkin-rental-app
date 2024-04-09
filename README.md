@@ -44,6 +44,6 @@ but it is likely that this class includes details such as the customer's name an
 
 ![domain model](img/domain-model.jpeg)
 
-## Clas diagram
+## Class diagram
 
 ![Class Diagram](img/Parking-app.jpeg)
