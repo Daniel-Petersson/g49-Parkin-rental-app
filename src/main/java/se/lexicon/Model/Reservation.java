@@ -1,6 +1,7 @@
 package se.lexicon.Model;
 
 import java.time.LocalDateTime;
+import java.time.Period;
 
 public class Reservation {
     private String id;
@@ -59,6 +60,7 @@ public class Reservation {
 
     public void setEndTime(int hours) {
         if (hours <= 0) throw new IllegalArgumentException("Hours cannot be negative or 0");
+        if (hours > 48) throw new IllegalArgumentException("Maximum hours of parking is 48")
         this.endTime = startTime.plusHours(hours);
     }
 
@@ -69,7 +71,7 @@ public class Reservation {
         StringBuilder builder = new StringBuilder();
         builder.append("ReservationId: ").append(id)
                 .append("Customer: ").append(customer.getName())
-                .append("Parkin Spot: ").append(parkingSpot.getSpotNumber())
+                .append("Parking Spot: ").append(parkingSpot.getSpotNumber())
                 .append("Start time: ").append(startTime)
                 .append("End time: ").append(endTime)
                 .append("Associated Vehicle: ").append(associatedVehicle.getLicensePlate());
@@ -80,11 +82,14 @@ public class Reservation {
         if (customer.getReservation() != null) throw new IllegalArgumentException("Customer has already a reserved parking spot");
         if (parkingSpot==null) throw new IllegalArgumentException("Parking spot should not be null");
         if (parkingSpot.isOccupied()) throw new IllegalArgumentException("Paring spot i not available");
+        if (customer == null) throw new IllegalArgumentException("Customer cannot be null");
+        if (associatedVehicle == null) throw new IllegalArgumentException("Vehicle cannot be null");
         parkingSpot.occupy();
         customer.setReservation(this);
     }
 
     public void cancel(){
+        if (!parkingSpot.isOccupied()) throw new IllegalArgumentException("Parking spot is already available");
         parkingSpot.vacate();
         customer.setReservation(null);
     }
