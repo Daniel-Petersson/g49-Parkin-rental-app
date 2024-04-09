@@ -10,11 +10,11 @@ public class Vehicle {
     }
 
     public Vehicle(String licensePlate) {
-        this(licensPlate, VehicleType.CAR); //Chaining constructor
+        this(licensePlate, VehicleType.CAR); //Chaining constructor
     }
 
     public String getLicensePlate() {
-        return licensPlate;
+        return licensePlate;
     }
 
     public VehicleType getType() {
@@ -22,10 +22,10 @@ public class Vehicle {
     }
 
     public void setLicensePlate(String licensePlate) {
-        if (licensPlate == null || licensPlate.isEmpty()) {
+        if (licensePlate == null || licensePlate.isEmpty()) {
             throw new IllegalArgumentException("License plate cannot be null");
         }
-        this.licensPlate = licensPlate;
+        this.licensePlate = licensePlate;
     }
 
     public String getDescription() {

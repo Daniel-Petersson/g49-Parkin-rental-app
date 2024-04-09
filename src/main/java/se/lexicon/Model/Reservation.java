@@ -13,13 +13,12 @@ public class Reservation {
     //Constructor
     public Reservation(Customer customer, ParkingSpot parkingSpot, int hours, Vehicle associatedVehicle) {
         this.customer = customer;
+        reserve();
         this.parkingSpot = parkingSpot;
         this.startTime = LocalDateTime.now();
         setEndTime(hours);
         this.associatedVehicle = associatedVehicle;
     }
-
-    public Reservation()
 
 
     //Getters
@@ -59,7 +58,6 @@ public class Reservation {
     }
 
     public void setEndTime(int hours) {
-        //todo: add validation if hours is negative or 0
         if (hours <= 0) throw new IllegalArgumentException("Hours cannot be negative or 0");
         this.endTime = startTime.plusHours(hours);
     }
@@ -76,5 +74,18 @@ public class Reservation {
                 .append("End time: ").append(endTime)
                 .append("Associated Vehicle: ").append(associatedVehicle.getLicensePlate());
         return builder.toString();
+    }
+
+    public void reserve(){
+        if (customer.getReservation() != null) throw new IllegalArgumentException("Customer has already a reserved parking spot");
+        if (parkingSpot==null) throw new IllegalArgumentException("Parking spot should not be null");
+        if (parkingSpot.isOccupied()) throw new IllegalArgumentException("Paring spot i not available");
+        parkingSpot.occupy();
+        customer.setReservation(this);
+    }
+
+    public void cancel(){
+        parkingSpot.vacate();
+        customer.setReservation(null);
     }
 }
