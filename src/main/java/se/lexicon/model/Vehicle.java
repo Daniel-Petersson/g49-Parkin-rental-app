@@ -1,4 +1,4 @@
-package se.lexicon.Model;
+package se.lexicon.model;
 
 public class Vehicle {
     private String licensePlate;

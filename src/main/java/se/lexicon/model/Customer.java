@@ -1,4 +1,4 @@
-package se.lexicon.Model;
+package se.lexicon.model;
 
 public class Customer {
 
@@ -9,9 +9,9 @@ public class Customer {
 
 
     //create customer
-    public Customer(String name, String phoneNumber){
+    public Customer(String name, String phoneNumber) {
         this.name = name;
-        this.phoneNumber=phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     //get customer info use this
@@ -42,20 +42,21 @@ public class Customer {
         this.reservation = reservation;
     }
 
-    public void setId(int id){
+    public void setId(int id) {
 
     }
 
-    public String getDescription(){
-        StringBuilder builder= new StringBuilder();
+    public String getDescription() {
+        StringBuilder builder = new StringBuilder();
         builder.append("Customer: ").append(id)
                 .append(", Name: ").append(name)
                 .append(", PhoneNumber: ").append(phoneNumber);
         if (reservation != null) {
             builder.append(", Reservation: Yes");
-        }else {
+        } else {
             builder.append(", Reservation: No");
-        };
+        }
+        ;
         return builder.toString();
     }
 }
