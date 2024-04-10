@@ -54,16 +54,4 @@ public interface IReservationDAO {
      */
     Reservation findByParkingSpotNumber(int spotNumber);
 
-    /**
-     * Finds all reservations in the data store.
-     * @return A collection of all reservations.
-     */
-    Collection<Reservation> findAll();
-
-    /**
-     * Finds parking spots by their area code.
-     * @param areaCode The area code of the parking spots.
-     * @return A list of parking spots with the given area code.
-     */
-    List<ParkingSpot> findByAreaCode(int areaCode);
 }
