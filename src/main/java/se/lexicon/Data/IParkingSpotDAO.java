@@ -35,9 +35,9 @@ public interface IParkingSpotDAO {
 
     /**
      * Finds all parking spots in the data store.
-     * @return A collection of all parking spots.
+     * @return A List of all parking spots.
      */
-    Collection<ParkingSpot> findAll();
+    List<ParkingSpot> findAll();
 
     /**
      * Finds parking spots by their area code.
