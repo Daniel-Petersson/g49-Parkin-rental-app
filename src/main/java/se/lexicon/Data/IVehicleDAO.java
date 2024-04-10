@@ -36,4 +36,6 @@ public interface IVehicleDAO {
      * @return A collection of all vehicles.
      */
     Collection<Vehicle> findAll();
+
+    void upDate(Vehicle vehicle);
 }

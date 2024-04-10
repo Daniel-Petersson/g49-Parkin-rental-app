@@ -72,4 +72,23 @@ public class VehicleDAOImpl implements IVehicleDAO {
     public Collection<Vehicle> findAll() {
         return new ArrayList<>(storage);
     }
+
+    @Override
+    public void upDate(Vehicle vehicle) {
+        //Todo impl
+        //check the method parameter
+        if (vehicle==null) throw new IllegalArgumentException("Vechile data is null");
+        //find int by license plate
+        Optional<Vehicle> existingVehicleOptional = find(vehicle.getLicensePlate());
+        if (!existingVehicleOptional.isPresent()){
+            throw new IllegalArgumentException("License plate not found");
+        }
+        //if vechile exist ---> find index
+        Vehicle existingVehicle = existingVehicleOptional.get();
+                int index = storage.indexOf(existingVehicle);
+        //replace it at existing index
+        storage.set(index,vehicle);
+
+
+    }
 }

@@ -82,6 +82,28 @@ public class VehicleDAOImplTest {
     @Test
     public void testRemoveNonExistingVehicle() {
         // Assert that the remove operation returns false when trying to remove a vehicle that does not exist
-        assertFalse(vehicleDAO.remove("ABC123"));
+       boolean removed = vehicleDAO.remove("ABC123");
+        assertFalse(removed);
+    }
+
+    // Test case update vechilve
+    @Test
+    public void testUpdateExistingVehicle(){
+        //create new vehicle
+        Vehicle vehicle = new Vehicle("ABC123", VehicleType.CAR);
+        //add this to DAO
+        vehicleDAO.create(vehicle);
+        //create an update vehicle object with the same licensplate but different type
+        Vehicle upDatedVehicle = new Vehicle("ABC123",VehicleType.EL);
+        //Updateing vehicle in DAO
+        vehicleDAO.upDate(upDatedVehicle);
+        //find vehicle from DAO
+        Optional<Vehicle> result = vehicleDAO.find("ABC123");
+
+        //test that vehicle is found
+        assertTrue(result.isPresent());
+
+        //assert that the type of the found vehicle is updated.
+        assertEquals(result.get().getType(),VehicleType.EL);
     }
 }
