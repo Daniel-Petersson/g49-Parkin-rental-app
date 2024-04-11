@@ -12,6 +12,7 @@ public interface IVehicleDAO {
 
     /**
      * Creates a new vehicle and adds it to the data store.
+     *
      * @param vehicle The vehicle to be added.
      * @return The added vehicle.
      */
@@ -19,6 +20,7 @@ public interface IVehicleDAO {
 
     /**
      * Finds a vehicle in the data store by its license plate.
+     *
      * @param licensePlate The license plate of the vehicle to find.
      * @return An Optional containing the found vehicle, or an empty Optional if no vehicle was found.
      */
@@ -26,6 +28,7 @@ public interface IVehicleDAO {
 
     /**
      * Removes a vehicle from the data store by its license plate.
+     *
      * @param licensePlate The license plate of the vehicle to remove.
      * @return true if the vehicle was successfully removed, false otherwise.
      */
@@ -33,6 +36,7 @@ public interface IVehicleDAO {
 
     /**
      * Finds all vehicles in the data store.
+     *
      * @return A collection of all vehicles.
      */
     Collection<Vehicle> findAll();

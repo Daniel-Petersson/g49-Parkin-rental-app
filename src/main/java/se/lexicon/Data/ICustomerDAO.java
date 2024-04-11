@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface ICustomerDAO {
     /**
      * Creates a new customer and adds it to the data store.
+     *
      * @param customer The customer to be added.
      * @return The added customer.
      */
@@ -15,6 +16,7 @@ public interface ICustomerDAO {
 
     /**
      * Finds a customer in the data store by its id.
+     *
      * @param id The id of the customer to find.
      * @return An Optional containing the found customer, or an empty Optional if no customer was found.
      */
@@ -22,6 +24,7 @@ public interface ICustomerDAO {
 
     /**
      * Removes a customer from the data store by its id.
+     *
      * @param id The id of the customer to remove.
      * @return true if the customer was successfully removed, false otherwise.
      */
@@ -29,6 +32,7 @@ public interface ICustomerDAO {
 
     /**
      * Finds all customers in the data store.
+     *
      * @return A collection of all customers.
      */
     Collection<Customer> findAll();

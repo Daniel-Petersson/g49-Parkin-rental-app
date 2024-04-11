@@ -77,7 +77,7 @@ public class VehicleDAOImpl implements IVehicleDAO {
     public void upDate(Vehicle vehicle) {
         //Todo impl
         //check the method parameter
-        if (vehicle==null) throw new IllegalArgumentException("Vechile data is null");
+        if (vehicle==null) throw new IllegalArgumentException("Vehicle data is null");
         //find int by license plate
         Optional<Vehicle> existingVehicleOptional = find(vehicle.getLicensePlate());
         if (!existingVehicleOptional.isPresent()){
