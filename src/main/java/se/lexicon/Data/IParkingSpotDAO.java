@@ -24,7 +24,7 @@ public interface IParkingSpotDAO {
      * @param spotNumber The spot number of the parking spot to find.
      * @return An Optional containing the found parking spot, or an empty Optional if no parking spot was found.
      */
-    Optional<ParkingSpot> find(String spotNumber);
+    Optional<ParkingSpot> find(int spotNumber);
 
     /**
      * Removes a parking spot from the data store by its spot number.
