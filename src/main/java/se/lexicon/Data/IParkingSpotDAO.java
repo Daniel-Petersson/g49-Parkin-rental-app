@@ -31,7 +31,7 @@ public interface IParkingSpotDAO {
      * @param spotNumber The spot number of the parking spot to remove.
      * @return true if the parking spot was successfully removed, false otherwise.
      */
-    boolean remove(String spotNumber);
+    boolean remove(int spotNumber);
 
     /**
      * Finds all parking spots in the data store.
