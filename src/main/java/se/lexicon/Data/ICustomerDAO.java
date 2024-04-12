@@ -3,6 +3,7 @@ package se.lexicon.Data;
 import se.lexicon.model.Customer;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 public interface ICustomerDAO {
@@ -35,5 +36,5 @@ public interface ICustomerDAO {
      *
      * @return A collection of all customers.
      */
-    Collection<Customer> findAll();
+       List<Customer> findAll();
 }

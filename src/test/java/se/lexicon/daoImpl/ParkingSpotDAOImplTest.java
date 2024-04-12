@@ -1,4 +1,4 @@
-package se.lexicon;
+package se.lexicon.daoImpl;
 
 public class ParkingSpotDAOImplTest {
     //todo: Implement JUnit test

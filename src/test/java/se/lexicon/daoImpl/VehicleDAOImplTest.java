@@ -1,4 +1,4 @@
-package se.lexicon;
+package se.lexicon.daoImpl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -86,7 +86,7 @@ public class VehicleDAOImplTest {
         assertFalse(removed);
     }
 
-    // Test case update vechilve
+    // Test case update vehicle
     @Test
     public void testUpdateExistingVehicle(){
         //create new vehicle
@@ -95,7 +95,7 @@ public class VehicleDAOImplTest {
         vehicleDAO.create(vehicle);
         //create an update vehicle object with the same licensplate but different type
         Vehicle upDatedVehicle = new Vehicle("ABC123",VehicleType.EL);
-        //Updateing vehicle in DAO
+        //Updating vehicle in DAO
         vehicleDAO.upDate(upDatedVehicle);
         //find vehicle from DAO
         Optional<Vehicle> result = vehicleDAO.find("ABC123");

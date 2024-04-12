@@ -1,21 +1,17 @@
 package se.lexicon.model;
 
+import se.lexicon.Data.sequencer.CustomerSequencer;
+
 public class Customer {
 
     private int id;
-    private String name;
-    private String phoneNumber;
+    private final String name;
+    private final String phoneNumber;
     private Reservation reservation;
 
 
     //create customer
     public Customer(String name, String phoneNumber) {
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-    }
-
-    //get customer info use this
-    public Customer(int id, String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
     }
@@ -43,7 +39,7 @@ public class Customer {
     }
 
     public void setId(int id) {
-
+        CustomerSequencer.nextId();
     }
 
     public String getDescription() {
