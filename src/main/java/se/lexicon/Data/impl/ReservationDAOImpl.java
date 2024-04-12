@@ -2,6 +2,7 @@ package se.lexicon.Data.impl;
 
 import se.lexicon.Data.IReservationDAO;
 import se.lexicon.Data.sequencer.ReservationSequencer;
+import se.lexicon.model.Customer;
 import se.lexicon.model.Reservation;
 import se.lexicon.model.Vehicle;
 
@@ -17,7 +18,7 @@ public class ReservationDAOImpl implements IReservationDAO {
     public Reservation create(Reservation reservation) {
         if (reservation == null) throw new IllegalArgumentException("Parking spot cannot be null");
         Optional<Reservation> reservationOptional = find(reservation.getId());
-        if (reservationOptional.isPresent()) throw new IllegalArgumentException("Reservation already exist");
+        if(reservationOptional.isPresent()) throw new IllegalArgumentException("Reservation already exist");
         reservation.reserve();
         String id = ReservationSequencer.nextId();
         reservation.setId(id);

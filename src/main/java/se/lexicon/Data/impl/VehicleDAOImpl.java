@@ -24,7 +24,7 @@ public class VehicleDAOImpl implements IVehicleDAO {
     public Vehicle create(Vehicle vehicle) {
         if (vehicle== null) throw new IllegalArgumentException("vehicle data is null");
         Optional<Vehicle> vehicleOptional = find(vehicle.getLicensePlate());
-        if (vehicleOptional.isPresent()) throw new IllegalArgumentException("License plate already exist");
+        if (vehicleOptional.isPresent()) throw new IllegalArgumentException("Vehicle already exist");
         storage.add(vehicle);
         return vehicle;
     }

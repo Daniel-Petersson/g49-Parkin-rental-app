@@ -1,6 +1,7 @@
 package se.lexicon.Data.impl;
 
 import se.lexicon.Data.IParkingSpotDAO;
+import se.lexicon.model.Customer;
 import se.lexicon.model.ParkingSpot;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class ParkingSpotDAOImpl implements IParkingSpotDAO {
     public ParkingSpot create(ParkingSpot parkingSpot) {
         if (parkingSpot == null) throw new IllegalArgumentException("Parking spot cannot be null");
         Optional<ParkingSpot> parkingSpotOptional = find(parkingSpot.getSpotNumber());
-        if (parkingSpotOptional.isPresent()) throw new IllegalArgumentException("Parking spot is not available");
+        if(parkingSpotOptional.isPresent()) throw new IllegalArgumentException("Parking spot is duplicate");
 
         parkingSpots.add(parkingSpot);
         return parkingSpot;
@@ -37,7 +38,7 @@ public class ParkingSpotDAOImpl implements IParkingSpotDAO {
     public boolean remove(int spotNumber) {
         Optional<ParkingSpot> parkingSpotOptional = find(spotNumber);
         if (!parkingSpotOptional.isPresent()) {
-            throw new IllegalArgumentException("Parking spot not found");
+            return false;
         }
         parkingSpots.remove(parkingSpotOptional.get());
         return true;
