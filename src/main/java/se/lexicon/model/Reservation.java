@@ -13,7 +13,6 @@ public class Reservation {
     //Constructor
     public Reservation(Customer customer, ParkingSpot parkingSpot, int hours, Vehicle associatedVehicle) {
         this.customer = customer;
-        reserve();
         this.parkingSpot = parkingSpot;
         this.startTime = LocalDateTime.now();
         setEndTime(hours);
@@ -78,11 +77,9 @@ public class Reservation {
 
     public void reserve() {
         if (customer.getReservation() != null)
-            throw new IllegalArgumentException("Customer has already a reserved parking spot");
-        if (parkingSpot == null) throw new IllegalArgumentException("Parking spot should not be null");
-        if (parkingSpot.isOccupied()) throw new IllegalArgumentException("Paring spot i not available");
-        if (customer == null) throw new IllegalArgumentException("Customer cannot be null");
-        if (associatedVehicle == null) throw new IllegalArgumentException("Vehicle cannot be null");
+            throw new IllegalArgumentException("Customer has already a reserved parking spot.");
+        if (parkingSpot == null) throw new IllegalArgumentException("Parking Spot should not be null.");
+        if (parkingSpot.isOccupied()) throw new IllegalArgumentException("Parking spot is already occupied!");
         parkingSpot.occupy();
         customer.setReservation(this);
     }

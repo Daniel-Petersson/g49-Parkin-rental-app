@@ -16,12 +16,14 @@ public class ReservationDAOImpl implements IReservationDAO {
 
     @Override
     public Reservation create(Reservation reservation) {
-        if (reservation == null) throw new IllegalArgumentException("Parking spot cannot be null");
+        if (reservation == null) throw new IllegalArgumentException("Reservation cannot be null");
+        if (reservation.getParkingSpot().isOccupied()) throw new IllegalArgumentException("Parking spot is already occupied!");
         Optional<Reservation> reservationOptional = find(reservation.getId());
         if(reservationOptional.isPresent()) throw new IllegalArgumentException("Reservation already exist");
         reservation.reserve();
         String id = ReservationSequencer.nextId();
         reservation.setId(id);
+        reservations.add(reservation);
         return reservation;
     }
 
@@ -39,7 +41,7 @@ public class ReservationDAOImpl implements IReservationDAO {
     public boolean remove(String id) {
         Optional<Reservation> reservationOptional = find(id);
         if (!reservationOptional.isPresent()) {
-            throw new IllegalArgumentException("Reservation not found");
+            return false;
         }
         reservations.remove(reservationOptional.get());
         return true;

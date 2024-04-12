@@ -2,6 +2,8 @@ package se.lexicon;
 
 import se.lexicon.model.*;
 
+import java.util.Arrays;
+
 /**
  * Hello world!
  */
@@ -18,7 +20,7 @@ public class App {
 
         Reservation reservation = new Reservation(customer1, parkingSpot1, 4, car1);
 
-        System.out.println(reservation);
+        System.out.println(reservation.getDescription());
 
 
     }
